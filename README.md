@@ -1,8 +1,19 @@
-# React + Vite
+# E-commerce React App (Comfy)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![home](https://user-images.githubusercontent.com/53021935/176076753-973ae02f-31bb-49ce-b63b-9e24bfc32b07.png)
 
-Currently, two official plugins are available:
+![products](https://user-images.githubusercontent.com/53021935/176076776-31588d1a-8df5-44e8-9c21-0e43fa4c1662.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm install`
+
+### `npm run dev`
+
+### Deployment
+
+This app has been deployed to Surge: [Products | Comfy](https://impossible-grandfather.surge.sh/)
+
+Whenever you make changes and push them to the github, surge deployment will also start automatically. Check this link out for more info: [Deploying continuously using Git Hooks](https://surge.sh/help/deploying-continuously-using-git-hooks)
