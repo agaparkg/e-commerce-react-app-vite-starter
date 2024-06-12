@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import SingleProduct from './SingleProduct';
+import { useEffect, useState } from "react";
+import SingleProduct from "./SingleProduct";
+import { products } from "../features/products/products-data";
 
 function FeaturedProducts() {
   const [isLoading, setIsLoading] = useState(false);
-  const products = useSelector((store) => store.productsState.products);
   const [featuredProducts] = useState(
     products.filter((p) => p.fields.featured)
   );
@@ -21,22 +19,22 @@ function FeaturedProducts() {
   });
 
   return (
-    <section className='section featured'>
-      <div className='title'>
+    <section className="section featured">
+      <div className="title">
         <h2>
           <span>/</span> featured
         </h2>
       </div>
-      <div className='featured-center section-center'>
+      <div className="featured-center section-center">
         {!isLoading ? (
-          <h2 className='section-loading'>loading...</h2>
+          <h2 className="section-loading">loading...</h2>
         ) : (
           renderFeaturedProducts
         )}
       </div>
-      <Link to='/products' className='btn'>
+      <a href="#" className="btn">
         all products
-      </Link>
+      </a>
     </section>
   );
 }

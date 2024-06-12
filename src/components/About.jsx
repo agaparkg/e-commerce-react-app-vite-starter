@@ -1,20 +1,19 @@
-import { useLocation } from 'react-router-dom';
-import PageHero from './PageHero';
+import PageHero from "./PageHero";
 
 const About = () => {
-  let location = useLocation();
+  const pathName = "/about";
 
   return (
     <>
-      <PageHero path={location.pathname} />
+      <PageHero path={pathName} />
 
-      <section className='section section-center about-page'>
-        <div className='title'>
+      <section className="section section-center about-page">
+        <div className="title">
           <h2>
             <span>/</span> our history
           </h2>
         </div>
-        <p className='about-text'>
+        <p className="about-text">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
           accusantium sapiente tempora sed dolore esse deserunt eaque excepturi,
           delectus error accusamus vel eligendi, omnis beatae. Quisquam, dicta.

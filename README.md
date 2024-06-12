@@ -17,3 +17,9 @@ In the project directory, you can run:
 This app has been deployed to Surge: [Products | Comfy](https://impossible-grandfather.surge.sh/)
 
 Whenever you make changes and push them to the github, surge deployment will also start automatically. Check this link out for more info: [Deploying continuously using Git Hooks](https://surge.sh/help/deploying-continuously-using-git-hooks)
+
+## Data URLs
+
+- All products - "https://course-api.com/javascript-store-products";
+
+- Single Product - 'https://course-api.com/javascript-store-single-product?id=rec43w3ipXvP28vog'

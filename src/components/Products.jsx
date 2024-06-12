@@ -1,15 +1,13 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { formatCompany } from '../utils/utils';
-import PageHero from './PageHero';
-import SingleProduct from './SingleProduct';
+import { useState } from "react";
+import { formatCompany } from "../utils/utils";
+import PageHero from "./PageHero";
+import SingleProduct from "./SingleProduct";
 
 function Products() {
   const [priceInputVal, setPriceInputVal] = useState(50);
-  const [searchVal, setSearchVal] = useState('');
-  const [companyName, setCompanyName] = useState('all');
-  let location = useLocation();
+  const [searchVal, setSearchVal] = useState("");
+  const [companyName, setCompanyName] = useState("all");
+  const pathName = "/products";
 
   const products = useSelector((store) => store.productsState.products);
 
@@ -17,10 +15,10 @@ function Products() {
     return (p.fields.price / 100).toFixed(2) < Number(priceInputVal);
   });
 
-  const companies = ['all', ...new Set(products.map((p) => p.fields.company))];
+  const companies = ["all", ...new Set(products.map((p) => p.fields.company))];
 
   filteredProducts =
-    companyName === 'all'
+    companyName === "all"
       ? filteredProducts
       : filteredProducts.filter((p) => p.fields.company === companyName);
 
@@ -48,33 +46,33 @@ function Products() {
 
   return (
     <>
-      <PageHero path={location.pathname} />
-      <section className='products'>
+      <PageHero path={pathName} />
+      <section className="products">
         {/* filters */}
-        <div className='filters'>
-          <div className='filters-container'>
+        <div className="filters">
+          <div className="filters-container">
             {/* search */}
-            <form className='input-form'>
+            <form className="input-form">
               <input
-                type='text'
-                className='search-input'
-                placeholder='search...'
+                type="text"
+                className="search-input"
+                placeholder="search..."
                 value={searchVal}
                 onChange={handleProductSearch}
               />
               {searchVal && (
                 <i
-                  onClick={() => setSearchVal('')}
-                  className='fa fa-times clear-search'
+                  onClick={() => setSearchVal("")}
+                  className="fa fa-times clear-search"
                 ></i>
               )}
             </form>
             {/* companies list */}
             <h4>Company</h4>
-            <article className='companies'>
+            <article className="companies">
               {companies.map((c, ind) => {
                 const btnClass =
-                  c === companyName ? 'company-btn active' : 'company-btn';
+                  c === companyName ? "company-btn active" : "company-btn";
                 return (
                   <button
                     onClick={() => changeCompanyProducts(c)}
@@ -88,26 +86,26 @@ function Products() {
             </article>
             {/* price */}
             <h4>Price</h4>
-            <form className='price-form'>
+            <form className="price-form">
               <input
-                type='range'
-                className='price-filter'
-                min='0'
+                type="range"
+                className="price-filter"
+                min="0"
                 value={priceInputVal}
-                max='100'
+                max="100"
                 onChange={handlePriceChange}
               />
             </form>
-            <p className='price-value'>Value: ${priceInputVal}</p>
+            <p className="price-value">Value: ${priceInputVal}</p>
           </div>
         </div>
         {/* products */}
-        <div className='products-container'>
+        <div className="products-container">
           {filteredProducts.map((fp) => {
             return <SingleProduct fp={fp} key={fp.id} />;
           })}
           {!filteredProducts.length && (
-            <h3 className='filter-error'>
+            <h3 className="filter-error">
               sorry, no products matched your search
             </h3>
           )}
