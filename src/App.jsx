@@ -3,6 +3,7 @@ import Cart from "./components/Cart";
 import CheckoutModal from "./components/CheckoutModal";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
+import Products from "./components/Products";
 import SideBar from "./components/SideBar";
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
       <Cart />
       {/* checkout-modal */}
       <CheckoutModal />
-      <Home />
+      {/* <Home /> */}
+      <Products />
     </div>
   );
 }

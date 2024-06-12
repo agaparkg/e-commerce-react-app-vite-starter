@@ -6,6 +6,7 @@ const ProductDetails = ({ id }) => {
   const product = products.find((p) => p.id === id);
 
   const { name, price, company, colors, image } = product.fields;
+
   const imgUrl = image[0].thumbnails.large.url;
 
   return (

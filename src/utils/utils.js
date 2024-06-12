@@ -1,13 +1,3 @@
-const getElement = (selection) => {
-  const element = document.querySelector(selection);
-
-  if (element) return element;
-
-  throw new Error(
-    `Please check "${selection}" selector, no such element exist`
-  );
-};
-
 const formatPrice = (price) => {
   let formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -39,10 +29,4 @@ const setStorageItem = (name, item) => {
   localStorage.setItem(name, JSON.stringify(item));
 };
 
-export {
-  getElement,
-  formatPrice,
-  getStorageItem,
-  setStorageItem,
-  formatCompany,
-};
+export { formatPrice, getStorageItem, setStorageItem, formatCompany };

@@ -2,33 +2,17 @@ import { useState } from "react";
 import { formatCompany } from "../utils/utils";
 import PageHero from "./PageHero";
 import SingleProduct from "./SingleProduct";
+import { products } from "../features/products/products-data";
 
 function Products() {
   const [priceInputVal, setPriceInputVal] = useState(50);
   const [searchVal, setSearchVal] = useState("");
   const [companyName, setCompanyName] = useState("all");
+
   const pathName = "/products";
 
-  const products = useSelector((store) => store.productsState.products);
-
-  let filteredProducts = products.filter((p) => {
-    return (p.fields.price / 100).toFixed(2) < Number(priceInputVal);
-  });
-
-  const companies = ["all", ...new Set(products.map((p) => p.fields.company))];
-
-  filteredProducts =
-    companyName === "all"
-      ? filteredProducts
-      : filteredProducts.filter((p) => p.fields.company === companyName);
-
-  if (searchVal.trim()) {
-    filteredProducts = filteredProducts.filter((p) => {
-      let name = p.fields.company;
-      name = name.toLowerCase();
-      return name.startsWith(searchVal);
-    });
-  }
+  // Filter products by priceInputVal, searchVal, companyName
+  let filteredProducts = [];
 
   const handlePriceChange = (e) => {
     const value = e.target.value;
@@ -70,19 +54,13 @@ function Products() {
             {/* companies list */}
             <h4>Company</h4>
             <article className="companies">
-              {companies.map((c, ind) => {
-                const btnClass =
-                  c === companyName ? "company-btn active" : "company-btn";
-                return (
-                  <button
-                    onClick={() => changeCompanyProducts(c)}
-                    key={ind}
-                    className={btnClass}
-                  >
-                    {formatCompany(c)}
-                  </button>
-                );
-              })}
+              {/* "company-btn active" : "company-btn" */}
+              <button onClick={() => {}} className="company-btn active">
+                All
+              </button>
+              <button onClick={() => {}} className="company-btn">
+                Marcos
+              </button>
             </article>
             {/* price */}
             <h4>Price</h4>
@@ -101,10 +79,11 @@ function Products() {
         </div>
         {/* products */}
         <div className="products-container">
-          {filteredProducts.map((fp) => {
-            return <SingleProduct fp={fp} key={fp.id} />;
-          })}
-          {!filteredProducts.length && (
+          {filteredProducts.length !== 0 ? (
+            filteredProducts.map((fp) => {
+              return <SingleProduct fp={fp} key={fp.id} />;
+            })
+          ) : (
             <h3 className="filter-error">
               sorry, no products matched your search
             </h3>

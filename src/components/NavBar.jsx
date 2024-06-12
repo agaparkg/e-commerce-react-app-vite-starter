@@ -4,10 +4,10 @@ import CartIcon from "./CartIcon";
 import NavBarLinks from "./NavBarLinks";
 
 function NavBar() {
-  const route = "home";
-  // const route = 'products';
+  // const route = "home";
+  const route = "products";
+  // const navClass = route === "home" ? "navbar" : "navbar page";
   const navClass = route === "home" ? "navbar" : "navbar page";
-  // const navClass = route === 'home' ? 'navbar' : 'navbar page';
 
   return (
     <nav className={navClass}>
