@@ -1,12 +1,12 @@
+import { products } from "../features/products/products-data";
 import Footer from "./Footer";
 import SingleCartProduct from "./SingleCartProduct";
-import { products } from "../features/products/products-data";
 
 function Cart() {
-  const showCart = false;
-  // const showCart = true;
+  // const showCart = false;
+  const showCart = true;
   const showCartClassName = showCart ? "cart-overlay show" : "cart-overlay";
-  const cartProducts = products;
+  const cartProducts = [];
 
   return (
     <div className={showCartClassName}>
@@ -19,10 +19,16 @@ function Cart() {
         </header>
         {/* cart items */}
         <div className="cart-items">
-          {cartProducts.map((cp) => {
-            const { id } = cp;
-            return <SingleCartProduct key={id} id={id} />;
-          })}
+          {cartProducts.length !== 0 ? (
+            cartProducts.map((cp) => {
+              const { id } = cp;
+              return <SingleCartProduct key={id} id={id} />;
+            })
+          ) : (
+            <div>
+              <h4 className="cart-empty">Cart is empty!</h4>
+            </div>
+          )}
         </div>
         {/* footer */}
         <Footer />

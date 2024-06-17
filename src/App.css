@@ -544,6 +544,13 @@ Cart
 .cart-item-name {
   margin-bottom: 0.15rem;
 }
+
+.cart-empty {
+  margin-top: 200px;
+  font-style: italic;
+  text-align: center;
+}
+
 .cart-item-price {
   margin-bottom: 0;
   font-size: 0.75rem;

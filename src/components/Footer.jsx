@@ -2,7 +2,7 @@ import { formatPrice } from "../utils/utils";
 import { products } from "../features/products/products-data";
 
 function Footer() {
-  const cartProducts = products;
+  const cartProducts = [];
 
   const totalCartPrice = cartProducts.reduce(
     (sum, item) => sum + item.count * item.fields.price,
