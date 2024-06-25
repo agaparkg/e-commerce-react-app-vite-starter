@@ -1,8 +1,13 @@
 import { formatPrice } from "../utils/utils";
-import { products } from "../features/products/products-data";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeProductFromCart,
+  selectAllState,
+} from "../features/products/productsSlice";
 
 const SingleCartProduct = ({ id }) => {
-  const cartProducts = products;
+  const dispatch = useDispatch();
+  const { cartProducts } = useSelector(selectAllState);
 
   const cartProduct = cartProducts.find((cp) => cp.id === id);
 
@@ -18,7 +23,10 @@ const SingleCartProduct = ({ id }) => {
       <div>
         <h4 className="cart-item-name">{name}</h4>
         <p className="cart-item-price">{formatPrice(price)}</p>
-        <button onClick={() => {}} className="cart-item-remove-btn">
+        <button
+          onClick={() => dispatch(removeProductFromCart(cartProduct.id))}
+          className="cart-item-remove-btn"
+        >
           remove
         </button>
       </div>

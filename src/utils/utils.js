@@ -8,6 +8,7 @@ const formatPrice = (price) => {
 };
 
 const formatCompany = (company) => {
+  // ikea
   let capCompanyName = company[0].toUpperCase() + company.slice(1);
 
   return capCompanyName;

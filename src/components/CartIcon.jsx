@@ -1,9 +1,13 @@
+import { useDispatch, useSelector } from "react-redux";
 import { products } from "../features/products/products-data";
+import {
+  displayCart,
+  selectAllState,
+} from "../features/products/productsSlice";
 
 function CartIcon() {
-  const cartProducts = products;
-
-  // const cartCount = cartProducts.reduce((sum, item) => sum + item.count, 0);
+  const dispatch = useDispatch();
+  const { cartProducts } = useSelector(selectAllState);
 
   const cartCount = cartProducts.reduce(
     (sum, item) => (item.count ? sum + item.count : sum + 0),
@@ -12,7 +16,7 @@ function CartIcon() {
 
   return (
     <div className="toggle-container">
-      <button onClick={() => {}} className="toggle-cart">
+      <button onClick={() => dispatch(displayCart())} className="toggle-cart">
         <i className="fa fa-shopping-cart"></i>
       </button>
       <span className="cart-item-count">{cartCount}</span>

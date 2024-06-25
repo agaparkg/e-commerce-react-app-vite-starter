@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import SingleProduct from "./SingleProduct";
-import { products } from "../features/products/products-data";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectAllState,
+  toggleLoading,
+} from "../features/products/productsSlice";
+import { Link } from "react-router-dom";
 
 function FeaturedProducts() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [featuredProducts] = useState(
-    products.filter((p) => p.fields.featured)
-  );
+  const { isLoading, featuredProducts } = useSelector(selectAllState);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(() => {
-      setIsLoading(true);
+      dispatch(toggleLoading(true));
     }, 500);
   }, []);
 
@@ -32,9 +35,9 @@ function FeaturedProducts() {
           renderFeaturedProducts
         )}
       </div>
-      <a href="#" className="btn">
+      <Link to="/products" className="btn">
         all products
-      </a>
+      </Link>
     </section>
   );
 }

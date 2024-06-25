@@ -1,17 +1,21 @@
-import { products } from "../features/products/products-data";
+import { useDispatch, useSelector } from "react-redux";
 import Footer from "./Footer";
 import SingleCartProduct from "./SingleCartProduct";
+import {
+  displayCart,
+  selectAllState,
+} from "../features/products/productsSlice";
 
 function Cart() {
-  // const showCart = false;
-  const showCart = true;
+  const dispatch = useDispatch();
+  const { showCart, cartProducts } = useSelector(selectAllState);
+
   const showCartClassName = showCart ? "cart-overlay show" : "cart-overlay";
-  const cartProducts = [];
 
   return (
     <div className={showCartClassName}>
       <aside className="cart">
-        <button onClick={() => {}} className="cart-close">
+        <button onClick={() => dispatch(displayCart())} className="cart-close">
           <i className="fa fa-times"></i>
         </button>
         <header>

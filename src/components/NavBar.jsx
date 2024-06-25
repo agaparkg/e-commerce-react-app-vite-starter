@@ -1,12 +1,14 @@
+import { useLocation } from "react-router-dom";
 import logoBlack from "../images/logo-black.png";
 import logoWhite from "../images/logo-white.png";
 import CartIcon from "./CartIcon";
 import NavBarLinks from "./NavBarLinks";
 
 function NavBar() {
-  // const route = "home";
-  const route = "products";
-  // const navClass = route === "home" ? "navbar" : "navbar page";
+  const { pathname } = useLocation();
+
+  const route = pathname === "/" ? "home" : "products";
+
   const navClass = route === "home" ? "navbar" : "navbar page";
 
   return (

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function NavBarLinks() {
   return (
     <div>
@@ -6,19 +8,19 @@ function NavBarLinks() {
       </button>
       <ul className="nav-links">
         <li>
-          <a href="#" className="nav-link">
+          <Link to="/" className="nav-link">
             home
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="nav-link">
+          <Link to="/products" className="nav-link">
             products
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="nav-link">
+          <Link to="/about" className="nav-link">
             about
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

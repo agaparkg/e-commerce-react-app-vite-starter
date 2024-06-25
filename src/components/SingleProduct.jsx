@@ -1,6 +1,10 @@
+import { useDispatch } from "react-redux";
 import { formatPrice } from "../utils/utils";
+import { addProductToCart } from "../features/products/productsSlice";
 
 const SingleProduct = ({ fp }) => {
+  const dispatch = useDispatch();
+
   return (
     <article className="product">
       <div className="product-container">
@@ -10,7 +14,10 @@ const SingleProduct = ({ fp }) => {
           <a href="#" className="product-icon">
             <i className="fa fa-search"></i>
           </a>
-          <button onClick={() => {}} className="product-cart-btn product-icon">
+          <button
+            onClick={() => dispatch(addProductToCart(fp.id))}
+            className="product-cart-btn product-icon"
+          >
             <i className="fa fa-shopping-cart"></i>
           </button>
         </div>
