@@ -1,8 +1,16 @@
 import { formatPrice } from "../utils/utils";
 import PageHero from "./PageHero";
-import { products } from "../features/products/products-data";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addProductToCart,
+  selectAllState,
+} from "../features/products/productsSlice";
+import { useParams } from "react-router-dom";
 
-const ProductDetails = ({ id }) => {
+const ProductDetails = () => {
+  const { products } = useSelector(selectAllState);
+  const dispatch = useDispatch();
+  let { id } = useParams(); // {id: "sdfasdfasd"}
   const product = products.find((p) => p.id === id);
 
   const { name, price, company, colors, image } = product.fields;
@@ -46,7 +54,10 @@ const ProductDetails = ({ id }) => {
                 venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki
                 trust fund hashtag kinfolk microdosing gochujang live-edge
               </p>
-              <button onClick={() => {}} className="addToCartBtn btn">
+              <button
+                onClick={() => dispatch(addProductToCart(id))}
+                className="addToCartBtn btn"
+              >
                 add to cart
               </button>
             </div>

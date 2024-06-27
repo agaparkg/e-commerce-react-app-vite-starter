@@ -43,8 +43,43 @@ const productsSlice = createSlice({
         (cp) => cp.id !== action.payload
       );
     },
+    increaseCartProductCount: (state, action) => {
+      state.cartProducts.forEach((cp) => {
+        if (cp.id === action.payload) {
+          cp.count++;
+        }
+      });
+
+      setStorageItem("cartProducts", state.cartProducts);
+    },
+    decreaseCartProductCount: (state, action) => {
+      state.cartProducts.forEach((cp) => {
+        if (cp.id === action.payload) {
+          if (cp.count !== 1) {
+            cp.count--;
+          } else {
+            state.cartProducts = state.cartProducts.filter(
+              (cp) => cp.id !== action.payload
+            );
+          }
+        }
+      });
+
+      setStorageItem("cartProducts", state.cartProducts);
+    },
   },
 });
+
+// product = {
+//   id: "sddfasdfs",
+//   fields: {}
+// }
+
+// cartProduct = {
+//   id: "sddfasdfs",
+//   fields: {},
+//   count: 1
+// }
 
 export const selectIsLoading = (store) => store.productsState.isLoading;
 export const selectAllState = (store) => store.productsState;
@@ -55,6 +90,8 @@ export const {
   displayCheckoutModal,
   addProductToCart,
   removeProductFromCart,
+  increaseCartProductCount,
+  decreaseCartProductCount,
 } = productsSlice.actions;
 
 export default productsSlice.reducer;

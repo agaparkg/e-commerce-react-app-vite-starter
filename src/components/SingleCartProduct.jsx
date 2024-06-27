@@ -1,6 +1,8 @@
 import { formatPrice } from "../utils/utils";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  decreaseCartProductCount,
+  increaseCartProductCount,
   removeProductFromCart,
   selectAllState,
 } from "../features/products/productsSlice";
@@ -12,6 +14,10 @@ const SingleCartProduct = ({ id }) => {
   const cartProduct = cartProducts.find((cp) => cp.id === id);
 
   const { image, name, price } = cartProduct.fields;
+
+  if (true) {
+  } else {
+  }
 
   return (
     <article className="cart-item">
@@ -32,11 +38,17 @@ const SingleCartProduct = ({ id }) => {
       </div>
 
       <div>
-        <button onClick={() => {}} className="cart-item-increase-btn">
+        <button
+          onClick={() => dispatch(increaseCartProductCount(id))}
+          className="cart-item-increase-btn"
+        >
           <i className="fas fa-chevron-up"></i>
         </button>
         <p className="cart-item-amount">{cartProduct.count}</p>
-        <button onClick={() => {}} className="cart-item-decrease-btn">
+        <button
+          onClick={() => dispatch(decreaseCartProductCount(id))}
+          className="cart-item-decrease-btn"
+        >
           <i className="fas fa-chevron-down"></i>
         </button>
       </div>

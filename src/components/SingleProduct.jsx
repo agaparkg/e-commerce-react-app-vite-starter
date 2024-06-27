@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { formatPrice } from "../utils/utils";
 import { addProductToCart } from "../features/products/productsSlice";
+import { Link } from "react-router-dom";
 
 const SingleProduct = ({ fp }) => {
   const dispatch = useDispatch();
@@ -11,9 +12,10 @@ const SingleProduct = ({ fp }) => {
         <img src={fp.fields.image[0].url} className="product-img img" alt="" />
 
         <div className="product-icons">
-          <a href="#" className="product-icon">
+          {/* <Link to="/products/rec43w3ipXvP28vog" className="product-icon"> */}
+          <Link to={`/products/${fp.id}`} className="product-icon">
             <i className="fa fa-search"></i>
-          </a>
+          </Link>
           <button
             onClick={() => dispatch(addProductToCart(fp.id))}
             className="product-cart-btn product-icon"
